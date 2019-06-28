@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Hello World!</title>
+</head>
+<script src="/socket.io/socket.io.js"></script>
+<body>
+  <script>
+
+    const socket = io();
+    
+    function setUsername() {
+      socket.emit('setUsername', document.getElementById('name').value);
+      console.log(`clicked setUsername().  document.getElementById('name').value : ${document.getElementById('name').value}`);
+    };
+    var user;
+    socket.on('userExists', function(data) {
+      document.getElementById('error-container').innerHTML = data;
+    })
+    socket.on('userSet', function(data) {
+      user = data.username;
+      console.log(`user: ${user}`)
+      document.body.innerHTML += `<input type="text" id="message"> <button type="button" 
+      name="button" onclick="sendMessage()">Send</button>
+      <div id="message-container"></div>`;
+    });
+    function sendMessage() {
+      var msg = document.getElementById('message').value;
+      if(msg) {
+        socket.emit('msg', {message: msg, user: user});
+      }
+    }
+    socket.on('newmsg', function(data) {
+      if(user) {
+        document.getElementById('message-container').innerHTML += `
+        <div><strong>${data.user}</strong>: ${data.message}</div>
+        `;
+      }
+    })
+  </script>
+  <div id="error-container"></div>
+  <input type="text"
+  name="name"
+  id="name"
+  value=""
+  placeholder="Enter your name"
+  >
+  <button type="button"
+  name="button"
+  onClick="setUsername()"
+  >Let me chat</button>
+</body>
+</html>

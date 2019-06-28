@@ -1,0 +1,12 @@
+.App {
+  text-align: center;
+
+  background-color: #282c34;
+  font-size: calc(10px + 2vmin);
+  color: white;
+  height: 100vh;
+  width: 100vw;
+  display: inline-grid;
+
+  grid-template-columns: 1fr 3fr;
+}

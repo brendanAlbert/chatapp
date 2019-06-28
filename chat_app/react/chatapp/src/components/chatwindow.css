@@ -1,0 +1,72 @@
+/* distinguishes users messages from others*/
+
+.chatwindow {
+  display: flex;
+  flex-direction: column;
+}
+
+#title {
+  letter-spacing: .5rem;
+  font-weight: bold;
+  font-size: 30px;
+  padding: 5px;
+  padding-top: 20px;
+  
+}
+
+#lock_icon {
+  padding-right: 30px;
+  font-size: 3rem;
+  color: #AAA;
+}
+
+#send_lock_icon {
+  padding-left: 10px;
+  font-size: 1.5rem;
+  color: #FFF;
+}
+
+.chat {
+  border: 2px dashed white;
+  height: 70vh;
+  margin: 20px;
+  border-radius: 12px;
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+  word-break: break-all;
+}
+
+.self {
+  background-color: lightskyblue;
+  align-self: flex-end;
+  border-radius: 5px;
+  padding: 15px;
+  margin: 20px 20px 20px 100px;
+}
+
+.other {
+  background-color: lightseagreen;
+  align-self: start;
+  border-radius: 5px;
+  padding: 15px;
+  margin: 20px 100px 20px 20px;
+}
+
+.msg_input {
+  align-self: stretch;
+  padding: 10px;
+  border-radius: 3px;
+  margin: 0px 20px 5px 20px;
+  font-size: 18px;
+}
+
+.msg_button {
+  align-self: stretch;
+  background-color: #6A6;
+  border-radius: 3px;
+  padding: 10px;
+  margin: 5px 20px 10px 20px;
+  color: #FFF;
+  font-size: 25px;
+}
